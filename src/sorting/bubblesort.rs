@@ -1,4 +1,4 @@
-pub fn sort<T: Ord + Copy>(items: &mut Vec<T>) {
+pub fn bubblesort<T: Ord + Copy>(items: &mut Vec<T>) {
     for i in 0..items.len() {
         let mut swapped = false;
 
@@ -12,5 +12,17 @@ pub fn sort<T: Ord + Copy>(items: &mut Vec<T>) {
         if !swapped {
             return;
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_bubblesort() {
+        let mut items = vec![19, 25, 11, 1, 4, 6, 5];
+        bubblesort(&mut items);
+        assert_eq!(items, vec![1, 4, 5, 6, 11, 19, 25]);
     }
 }
